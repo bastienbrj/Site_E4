@@ -1,0 +1,30 @@
+body{
+    background-color: #474b4e;
+    font-family: "Century Gothic", CenturyGothic, sans-serif; 
+}
+h1{ 
+    color: black;
+    font-size: 30px; 
+}
+.mb-4{
+    font-size: 25px;
+}
+.mission{
+    text-align: left;
+}
+a{
+    color: black;
+}
+a:link {
+    color:black;
+  }
+a:visited {
+    color: black;
+  }
+a:hover {
+    color: black;
+  }
+
+a:active {
+    color: black;
+  }

@@ -1,0 +1,16 @@
+body{
+    background-image: url('images/fond.jpg');
+    font-family: "Century Gothic", CenturyGothic, sans-serif; 
+}
+h1{ 
+    text-align: center;
+    color: black;
+    background-color: white;
+    font-size: 40px; 
+}
+.mb-4{
+    font-size: 25px;
+}
+.mission{
+    text-align: left;
+}
