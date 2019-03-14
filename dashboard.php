@@ -9,14 +9,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="mission.css"/>
+    <link rel="stylesheet" href="style1.css"/>
     <title>Site E4 | Accueil</title>
 </head>
 
 <body>
     <header>    
     <nav class="navbar navbar-dark bg-white">
-    <h1 class="mission"><a class="link" href="index.php">Epoka E4</h1>
+    <h1 class="mission">Epoka E4</h1>
       <ul class="nav justify-content-center">
       <li class="nav-item">
         <a class="nav-link" href="validation.php">Validation des missions</a>

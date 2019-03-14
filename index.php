@@ -25,7 +25,7 @@
           <h1 class="mb-4">Connectez-vous</h1>
 
           <form name="connexion" action="connexion.php" method="GET">
-            <div class="form-group"> <input type="text" class="form-control" name="pers_id" placeholder="Utilisateur" id="pers_id"> </div>
+            <div class="form-group"> <input type="text" class="form-control" name="pers_id" placeholder="Numéro d'utilisateur" id="pers_id" pattern="[0-9]"> </div>
             <div class="form-group"> <input type="password" class="form-control" name="pers_mdp" placeholder="Mot de passe" id="pers_mdp"> 
             </div> 
             <button type="submit" class="btn btn-primary">Valider</button>

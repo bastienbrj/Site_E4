@@ -1,16 +1,5 @@
-<?
+<?php
 session_start();
-/* 
-si la variable de session login n'existe pas cela siginifie que le visiteur 
-n'a pas de session ouverte, il n'est donc pas logué ni autorisé à
-acceder à l'espace membres
-*/
-if($_POST['pers_salarie']=0)) 
-{
-  echo 'Vous n\'êtes pas autorisé à acceder à cette zone';
-  header ('Location: http://localhost/Site_E4/index.php');
-  exit;
-}
 ?> 
 <!DOCTYPE html>
 <html>
@@ -23,15 +12,18 @@ if($_POST['pers_salarie']=0))
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="mission.css"/>
+    <link rel="stylesheet" href="style1.css"/>
     <title>Site E4 | Validation des missions</title>
 </head>
 
 <body>
     <header>    
     <nav class="navbar navbar-dark bg-white">
-    <h1 class="mission"><a class="link" href="index.php">Epoka E4</h1>
+    <h1 class="mission">Epoka E4</h1>
       <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" href="dashboard.php">Informations personnelles</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="validation.php">Validation des missions</a>
       </li>
@@ -44,10 +36,22 @@ if($_POST['pers_salarie']=0))
       <li class="nav-item">
         <a class="nav-link" href="deconnexion.php" onclick="alert('Vous êtes déconnecté')">Déconnexion</a>
       </li>
-    </ul>
-  </nav>   
-</header> 
-<br>
-<br>
+      </ul>
+    </nav>   
+  </header> 
+  <br>
+  <br>
+  <h1>Validations des missions de vos subordonnés</h1>
+  <br>
+  <center><table border="3">
+  <tr>
+    <td>Nom du salarié</td>
+    <td>Prénom du salarié</td>
+    <td>Début de la mission</td>
+    <td>Fin de la mission</td>
+    <td>Lieu de la mission</td>
+    <td>Validation</td>
+  </tr>
+</table></center>
 </body>
 </html>

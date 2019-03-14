@@ -5,7 +5,7 @@ body{
     text-align: center;
 }
 h1{ 
-    color: black;
+    color: white;
     font-size: 30px; 
 }
 .mb-4{
@@ -31,3 +31,9 @@ a:hover {
 a:active {
     color: black;
   }
+table{
+  text-align: center;
+}
+.mission{
+  color: black;
+}
