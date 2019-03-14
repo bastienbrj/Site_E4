@@ -18,16 +18,17 @@ catch(Exception $e){
         if($persexist == 1){
             $persinfo= $req->fetch();
             $_SESSION['pers_id'] = $persinfo[0];
-            header ('Location: http://localhost/Site_E4/mission.php');
+            $_SESSION['pers_mdp'] = $persinfo[3];
+            header ('Location: http://localhost/Site_E4/dashboard.php');
         } 
         else 
         {
-            $erreur = "Identifiant ou mot de passe invalide !";
+            echo "<script>alert('Identifiant ou mot de passe invalide !')</script>";
+           
         }
     }
     else 
     {
-        $erreur = "Tous les champs doivent être complétés !";
+        echo "<script>alert('Tous les champs doivent être completés !')</script>";
     }
-    echo $erreur;
 ?>

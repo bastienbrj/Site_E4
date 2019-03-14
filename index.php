@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="index.css"/>
-    <title>Site E4 | Accueil</title>
+    <title>Site E4 | Connexion</title>
 </head>
 
 <body>

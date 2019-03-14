@@ -24,7 +24,7 @@ if(!isset($_SESSION['pass_id'])) {
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="mission.css"/>
-    <title>Site E4 | Mission</title>
+    <title>Site E4 | Accueil</title>
 </head>
 
 <body>

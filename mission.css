@@ -1,6 +1,8 @@
 body{
     background-color: #474b4e;
     font-family: "Century Gothic", CenturyGothic, sans-serif; 
+    color: white;
+    text-align: center;
 }
 h1{ 
     color: black;
