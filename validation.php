@@ -5,7 +5,8 @@ si la variable de session login n'existe pas cela siginifie que le visiteur
 n'a pas de session ouverte, il n'est donc pas logué ni autorisé à
 acceder à l'espace membres
 */
-if(!isset($_SESSION['pers_id'])) {
+if($_POST['pers_salarie']=0)) 
+{
   echo 'Vous n\'êtes pas autorisé à acceder à cette zone';
   header ('Location: http://localhost/Site_E4/index.php');
   exit;
@@ -23,7 +24,7 @@ if(!isset($_SESSION['pers_id'])) {
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="mission.css"/>
-    <title>Site E4 | Accueil</title>
+    <title>Site E4 | Validation des missions</title>
 </head>
 
 <body>
@@ -48,12 +49,5 @@ if(!isset($_SESSION['pers_id'])) {
 </header> 
 <br>
 <br>
-    <?php
-    session_start();
-    // On affiche les infos sur l'utilisateur connecté
-    echo 'Vos informations personnels sont : <br />
-          Identifiant : ',$_SESSION['pers_id'],'<br />
-          Mot de passe : ',$_SESSION['pers_mdp'],'<br />';
-    ?>
 </body>
 </html>

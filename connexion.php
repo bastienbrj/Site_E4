@@ -1,5 +1,4 @@
 <?php
-$erreur = "";
 session_start();
 try{
     $bdd= new PDO ('mysql:host=localhost;dbname=epoka_e4', 'root', '');
@@ -7,8 +6,8 @@ try{
 catch(Exception $e){
     die("Erreur :" . $e->getMessage());
 }
-    $num = $_POST['pers_id'];
-    $mdp = $_POST['pers_mdp'];
+    $num = $_GET['pers_id'];
+    $mdp = $_GET['pers_mdp'];
 
     if(!empty($num) AND !empty($mdp)){
         $req = $bdd->prepare("SELECT * FROM personnel WHERE pers_id = ? AND pers_mdp = ?");
@@ -23,12 +22,11 @@ catch(Exception $e){
         } 
         else 
         {
-            echo "<script>alert('Identifiant ou mot de passe invalide !')</script>";
-           
+            echo "<script>alert('Identifiant ou mot de passe invalide !')</script>";         
         }
     }
     else 
     {
-        echo "<script>alert('Tous les champs doivent être completés !')</script>";
+        echo "<script>alert('Tous les champs doivent être complétés !')</script>";
     }
 ?>
