@@ -18,6 +18,8 @@ catch(Exception $e){
             $persinfo= $req->fetch();
             $_SESSION['pers_id'] = $persinfo[0];
             $_SESSION['pers_mdp'] = $persinfo[3];
+            $_SESSION['pers_nom'] = $persinfo[1];
+            $_SESSION['pers_prenom'] = $persinfo[2];
             header ('Location: http://localhost/Site_E4/dashboard.php?pers_id='.$_SESSION['pers_id']);
         } 
         else 

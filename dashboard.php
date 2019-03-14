@@ -1,16 +1,3 @@
-<?
-session_start();
-/* 
-si la variable de session login n'existe pas cela siginifie que le visiteur 
-n'a pas de session ouverte, il n'est donc pas logué ni autorisé à
-acceder à l'espace membres
-*/
-if(!isset($_SESSION['pers_id'])) {
-  echo 'Vous n\'êtes pas autorisé à acceder à cette zone';
-  header ('Location: http://localhost/Site_E4/index.php');
-  exit;
-}
-?> 
 <!DOCTYPE html>
 <html>
 
@@ -53,7 +40,8 @@ if(!isset($_SESSION['pers_id'])) {
     // On affiche les infos sur l'utilisateur connecté
     echo 'Vos informations personnels sont : <br />
           Identifiant : ',$_SESSION['pers_id'],'<br />
-          Mot de passe : ',$_SESSION['pers_mdp'],'<br />';
+          Prénom : ',$_SESSION['pers_prenom'],'<br />
+          Nom : ',$_SESSION['pers_nom'],'<br />';
     ?>
 </body>
 </html>
