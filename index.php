@@ -24,7 +24,7 @@
         <div class="mx-auto col-md-6 col-10 bg-white p-5">
           <h1 class="mb-4">Connectez-vous</h1>
 
-          <form name="connexion" action="connexion.php" method="POST">
+          <form name="connexion" action="connexion.php" method="GET">
             <div class="form-group"> <input type="text" class="form-control" name="pers_id" placeholder="Utilisateur" id="pers_id"> </div>
             <div class="form-group"> <input type="password" class="form-control" name="pers_mdp" placeholder="Mot de passe" id="pers_mdp"> 
             </div> 
