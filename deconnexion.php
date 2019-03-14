@@ -6,4 +6,4 @@
 // On redirige le visiteur vers la page désirée :
 	header('Location: http://localhost/Site_E4/index.php');
 	exit();
-?>
+?> 
