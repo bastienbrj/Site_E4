@@ -1,6 +1,8 @@
 <?php
 session_start();
-
+if (!isset($_SESSION['pers_id'])){
+  die(header('Location: index.php'));
+}
 ?> 
 <!DOCTYPE html>
 <html>
@@ -40,6 +42,14 @@ session_start();
       </ul>
     </nav>   
   </header> 
+  <?php
+  if(!isset($_SESSION['pers_responsable']) OR $_SESSION['pers_responsable'] == TRUE){
+  ?> 
+  <p class="refus">Accés refusé !</p>
+  <?php
+  }
+  elseif(isset($_SESSION['pers_responsable']) OR $_SESSION['pers_responsable'] == FALSE){
+  ?> 
   <br>
   <br>
   <h1>Paramétrage de l'application</h1>
@@ -49,6 +59,7 @@ session_start();
   <p>Indemnité d'hébergement : <input type="text" name="indemnite">
   <p><input type="submit"></p>
   <br>
+  <hr>
   <h1>Distance entre villes</h1>
   <p>De : <input type="text" name="villedepart"> A : <input type="text" name="villefin"> Distance en Km : <input type="text" name="distance"> <input type="submit">
   <br>
@@ -60,5 +71,8 @@ session_start();
     <td>Km</td>
   </tr>
 </table></center>
+<?php
+  }
+?>
 </body>
 </html>

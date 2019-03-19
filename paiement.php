@@ -1,7 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['pers_id'])){
+  die(header('Location: index.php'));
+}
+?>
 
-?> 
 <!DOCTYPE html>
 <html>
 
@@ -40,6 +43,14 @@ session_start();
       </ul>
     </nav>   
   </header> 
+  <?php
+  if(!isset($_SESSION['pers_responsable']) OR $_SESSION['pers_responsable'] == TRUE){
+  ?> 
+  <p class="refus">Accés refusé !</p>
+  <?php
+  }
+  elseif(isset($_SESSION['pers_responsable']) OR $_SESSION['pers_responsable'] == FALSE){
+  ?> 
   <br>
   <br>
   <h1>Paiement des missions</h1>
@@ -55,5 +66,8 @@ session_start();
     <td>Paiement</td>
   </tr>
 </table></center>
+<?php
+  }
+?>
 </body>
 </html>

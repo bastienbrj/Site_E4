@@ -20,6 +20,7 @@ catch(Exception $e){
             $_SESSION['pers_mdp'] = $persinfo[3];
             $_SESSION['pers_nom'] = $persinfo[1];
             $_SESSION['pers_prenom'] = $persinfo[2];
+            $_SESSION['pers_responsable'] = $persinfo[4];
             header ('Location: http://localhost/Site_E4/dashboard.php?pers_id='.$_SESSION['pers_id']);
         } 
         else 

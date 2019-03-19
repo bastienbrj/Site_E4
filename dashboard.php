@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['pers_id'])){
+  die(header('Location: index.php'));
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -36,7 +42,6 @@
 <br>
 <br>
     <?php
-    session_start();
     // On affiche les infos sur l'utilisateur connecté
     echo 'Vos informations personnels sont : <br />
           Identifiant : ',$_SESSION['pers_id'],'<br />
