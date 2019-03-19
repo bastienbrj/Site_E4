@@ -67,9 +67,9 @@ if (!isset($_SESSION['pers_id'])){
                         FROM personnel, mission, ville 
                         WHERE mis_PersoId = pers_id AND mis_VilId = Vil_Id');
 
-echo '<table style= "align">';
+echo '<table cellspacing=3; style= "align">';
 echo '<tr>';
-echo '<th style= "background-color: black">Nom</th><th style= "background-color: black">Prenom</th><th style= "background-color: black">Debut mission</th><th style= "background-color: black">Fin mission</th><th style= "background-color: black">Lieu mission</th><th style= "background-color: black">Validation</th>';
+echo '<th style= "background-color: black">Nom</th><th style= "background-color: black">Prenom</th><th style= "background-color: black">Debut mission</th><th style= "background-color: black">Fin mission</th><th style= "background-color: black">Lieu mission</th><th colspan=2; style= "background-color: black">Validation</th>';
 echo '</tr>';
 
 while($reponse = $req->fetch()) {
