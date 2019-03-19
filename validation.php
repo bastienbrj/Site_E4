@@ -67,22 +67,22 @@ if (!isset($_SESSION['pers_id'])){
                         FROM personnel, mission, ville 
                         WHERE mis_PersoId = pers_id AND mis_VilId = Vil_Id');
 
-echo '<table border= "align">';
+echo '<table style= "align">';
 echo '<tr>';
-echo '<td style="border: 1px solid">Nom</td><td style="border: 1px solid">Prenom</td><td style="border: 1px solid">Debut mission</td><td style="border: 1px solid">Fin mission</td><td style="border: 1px solid">Lieu mission</td><td style="border: 1px solid">Validation</td>';
+echo '<th style= "background-color: black">Nom</th><th style= "background-color: black">Prenom</th><th style= "background-color: black">Debut mission</th><th style= "background-color: black">Fin mission</th><th style= "background-color: black">Lieu mission</th><th style= "background-color: black">Validation</th>';
 echo '</tr>';
 
 while($reponse = $req->fetch()) {
 
     echo '<tr>';
 
-    echo '<td style="border: 1px solid">'; echo $reponse['pers_nom'] ; echo '</td>';
-    echo '<td style="border: 1px solid">'; echo $reponse['pers_prenom'] ; echo '</td>';
-    echo '<td style="border: 1px solid">'; echo $reponse['mis_dateDeb'] ; echo '</td>';
-    echo '<td style="border: 1px solid">'; echo $reponse['mis_dateFin']; echo '</td>';
-    echo '<td style="border: 1px solid">'; echo $reponse['Vil_Nom'] ; echo '</td>';
-    echo '<td style="border: 1px solid">'; if ($reponse['mis_valider'] == 1){echo 'Valider';}else{echo 'Non valider';}; echo '</td>';
-    echo '<td style="border: 1px solid">'; if ($reponse['mis_rembourser'] == 1){echo 'Rembourser';}else{echo 'Non rembourser';} ;echo '</td>';
+    echo '<td>'; echo $reponse['pers_nom'] ; echo '</td>';
+    echo '<td>'; echo $reponse['pers_prenom'] ; echo '</td>';
+    echo '<td>'; echo $reponse['mis_dateDeb'] ; echo '</td>';
+    echo '<td>'; echo $reponse['mis_dateFin']; echo '</td>';
+    echo '<td>'; echo $reponse['Vil_Nom'] ; echo '</td>';
+    echo '<td>'; if ($reponse['mis_valider'] == 1){echo 'Valider';}else{echo 'Non valider';}; echo '</td>';
+    echo '<td>'; if ($reponse['mis_rembourser'] == 1){echo 'Rembourser';}else{echo 'Non rembourser';} ;echo '</td>';
 
     echo '</tr>';
 }
