@@ -65,7 +65,7 @@ if (!isset($_SESSION['pers_id'])){
                         FROM personnel, mission, ville, paiement
                         WHERE mis_PersoId = pers_id AND mis_VilId = Vil_Id');
 
-echo '<table style="border: 1px solid; margin-left: 50px;">';
+echo '<table border: align">';
 echo '<tr>';
 echo '<td style="border: 1px solid">Nom</td><td style="border: 1px solid">Prenom</td><td style="border: 1px solid">Debut mission</td><td style="border: 1px solid">Fin mission</td><td style="border: 1px solid">Lieu mission</td><td style="border: 1px solid">Validation</td>';
 echo '</tr>';
