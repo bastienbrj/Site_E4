@@ -46,7 +46,7 @@ if (!isset($_SESSION['pers_id'])){
   <?php
   if(!isset($_SESSION['pers_responsable']) OR $_SESSION['pers_responsable'] == TRUE){
   ?> 
-  <p class="refus">Accés refusé !</p>
+  <p class="refus">Accès refusé !</p>
   <?php
   }
   elseif(isset($_SESSION['pers_responsable']) OR $_SESSION['pers_responsable'] == FALSE){
