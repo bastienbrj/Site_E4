@@ -14,7 +14,7 @@ session_start();
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="style1.css"/>
-    <title>Site E4 | Validation des missions</title>
+    <title>Site E4 | Paiement des frais</title>
 </head>
 
 <body>
@@ -42,7 +42,7 @@ session_start();
   </header> 
   <br>
   <br>
-  <h1>Validations des missions de vos subordonnés</h1>
+  <h1>Paiement des missions</h1>
   <br>
   <center><table border="3">
   <tr>
@@ -51,7 +51,8 @@ session_start();
     <td>Début de la mission</td>
     <td>Fin de la mission</td>
     <td>Lieu de la mission</td>
-    <td>Validation</td>
+    <td>Montant</td>
+    <td>Paiement</td>
   </tr>
 </table></center>
 </body>

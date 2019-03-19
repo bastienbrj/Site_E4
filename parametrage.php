@@ -14,7 +14,7 @@ session_start();
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="style1.css"/>
-    <title>Site E4 | Validation des missions</title>
+    <title>Site E4 | Paramétrage</title>
 </head>
 
 <body>
@@ -42,16 +42,22 @@ session_start();
   </header> 
   <br>
   <br>
-  <h1>Validations des missions de vos subordonnés</h1>
+  <h1>Paramétrage de l'application</h1>
   <br>
+  <h1>Montant du remboursement au km</h1>
+  <p>Remboursement au Km : <input type="text" name="km">
+  <p>Indemnité d'hébergement : <input type="text" name="indemnite">
+  <p><input type="submit"></p>
+  <br>
+  <h1>Distance entre villes</h1>
+  <p>De : <input type="text" name="villedepart"> A : <input type="text" name="villefin"> Distance en Km : <input type="text" name="distance"> <input type="submit">
+  <br>
+  <h1>Distances entre villes déjà saisies</h1>
   <center><table border="3">
   <tr>
-    <td>Nom du salarié</td>
-    <td>Prénom du salarié</td>
-    <td>Début de la mission</td>
-    <td>Fin de la mission</td>
-    <td>Lieu de la mission</td>
-    <td>Validation</td>
+    <td>De</td>
+    <td>A</td>
+    <td>Km</td>
   </tr>
 </table></center>
 </body>
