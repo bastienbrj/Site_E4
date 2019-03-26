@@ -74,7 +74,7 @@ if (!isset($_SESSION['pers_id'])){
   <p>De : <select name="distance1" id="distance1">
             <?php
             while($res = $req->fetch()) {
-              echo '<option>';
+              echo '<option value="Vil_Id">';
               echo $res['Vil_Nom'];
               echo '</option>';
             }
@@ -92,7 +92,7 @@ if (!isset($_SESSION['pers_id'])){
       À : <select name="distance2" id="distance2">
             <?php
             while($reponse = $req->fetch()) {
-              echo '<option>';
+              echo '<option value="Vil_Id">';
               echo $reponse['Vil_Nom'];
               echo '</option>';
             }

@@ -66,7 +66,7 @@ if (!isset($_SESSION['pers_id'])){
                         WHERE mis_PersoId = pers_id AND mis_VilId = Vil_Id');
 
 echo '<center>';
-echo '<table cellspacing=3; style= "align">';
+echo '<table style="width: 50%">';
 echo '<tr>';
 echo '<th style= "background-color: black">Nom</th><th style= "background-color: black">Prenom</th><th style= "background-color: black">Debut mission</th><th style= "background-color: black">Fin mission</th><th style= "background-color: black">Lieu mission</th><th style= "background-color: black">Montant</th><th style= "background-color: black">Paiement</th>';
 echo '</tr>';
