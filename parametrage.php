@@ -53,6 +53,15 @@ if (!isset($_SESSION['pers_id'])){
   <br>
   <br>
   <h1>Paramétrage de l'application</h1>
+  <?php
+  try{
+      $bdd= new PDO ('mysql:host=localhost;dbname=epoka_e4', 'root', '');
+      }
+    catch(Exception $e){
+      die("Erreur :" . $e->getMessage());
+      }
+   $req = $bdd->query('SELECT Vil_Id, Vil_CP, Vil_Nom FROM ville') 
+  ?>
   <br>
   <h1>Montant du remboursement au km</h1>
   <p>Remboursement au Km : <input type="text" name="km">
@@ -61,7 +70,34 @@ if (!isset($_SESSION['pers_id'])){
   <br>
   <hr>
   <h1>Distance entre villes</h1>
-  <p>De : <input type="text" name="villedepart"> A : <input type="text" name="villefin"> Distance en Km : <input type="text" name="distance"> <input type="submit">
+  <p>De : <select id="villedepart">
+            <?php
+            while($res = $req->fetch()) {
+              echo '<option>';
+              echo $res['Vil_Nom'];
+              echo '</option>';
+            }
+            ?>
+          </select> 
+  <?php
+  try{
+      $bdd= new PDO ('mysql:host=localhost;dbname=epoka_e4', 'root', '');
+      }
+    catch(Exception $e){
+      die("Erreur :" . $e->getMessage());
+      }
+   $req = $bdd->query('SELECT Vil_Id, Vil_CP, Vil_Nom FROM ville') 
+  ?>
+      À : <select id="villefin">
+            <?php
+            while($reponse = $req->fetch()) {
+              echo '<option>';
+              echo $reponse['Vil_Nom'];
+              echo '</option>';
+            }
+            ?>
+          </select> 
+      Distance en Km : <input type="text" name="distance"> <input type="submit">
   <br>
   <h1>Distances entre villes déjà saisies</h1>
   <center><table border="3">
