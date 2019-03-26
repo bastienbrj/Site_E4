@@ -64,9 +64,11 @@ if (!isset($_SESSION['pers_id'])){
   ?>
   <br>
   <h1>Montant du remboursement au km</h1>
+  <form method="post" action="script_remboursement.php">
   <p>Remboursement au Km : <input type="text" name="km">
   <p>Indemnité d'hébergement : <input type="text" name="indemnite">
   <p><input type="submit"></p>
+  </form>
   <br>
   <hr>
   <h1>Distance entre villes</h1>
@@ -104,11 +106,16 @@ if (!isset($_SESSION['pers_id'])){
   <br>
   <br>
   <h1>Distances entre villes déjà saisies</h1>
-  <center><table>
+  <center><table style="width: 15%">
   <tr>
     <th style= "background-color: black">De</th>
     <th style= "background-color: black">À</th>
-    <th style= "background-color: black">KM</th>
+    <th style= "background-color: black">Km</th>
+  </tr>
+  <tr>
+    <td>De</td>
+    <td>À</td>
+    <td>Km</td>
   </tr>
 
 </table></center>
