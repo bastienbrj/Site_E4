@@ -70,7 +70,8 @@ if (!isset($_SESSION['pers_id'])){
   <br>
   <hr>
   <h1>Distance entre villes</h1>
-  <p>De : <select id="villedepart">
+  <form method="post" action="script_para.php">
+  <p>De : <select name="distance1" id="distance1">
             <?php
             while($res = $req->fetch()) {
               echo '<option>';
@@ -88,7 +89,7 @@ if (!isset($_SESSION['pers_id'])){
       }
    $req = $bdd->query('SELECT Vil_Id, Vil_CP, Vil_Nom FROM ville') 
   ?>
-      À : <select id="villefin">
+      À : <select name="distance2" id="distance2">
             <?php
             while($reponse = $req->fetch()) {
               echo '<option>';
@@ -97,15 +98,19 @@ if (!isset($_SESSION['pers_id'])){
             }
             ?>
           </select> 
-      Distance en Km : <input type="text" name="distance"> <input type="submit">
+      Distance en Km : <input type="text" name="distKm"> 
+      <input type="submit">
+      </form>
+  <br>
   <br>
   <h1>Distances entre villes déjà saisies</h1>
-  <center><table border="3">
+  <center><table>
   <tr>
-    <td>De</td>
-    <td>A</td>
-    <td>Km</td>
+    <th style= "background-color: black">De</th>
+    <th style= "background-color: black">À</th>
+    <th style= "background-color: black">KM</th>
   </tr>
+
 </table></center>
 <?php
   }
