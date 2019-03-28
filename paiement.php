@@ -61,8 +61,8 @@ if (!isset($_SESSION['pers_id'])){
     catch(Exception $e){
       die("Erreur :" . $e->getMessage());
       }
-   $req = $bdd->query('SELECT pers_nom, pers_prenom, mis_dateDeb, mis_dateFin, Vil_Nom, mis_valider, mis_rembourser, pai_montant 
-                        FROM personnel, mission, ville, paiement
+   $req = $bdd->query('SELECT pers_nom, pers_prenom, mis_dateDeb, mis_dateFin, Vil_Nom, mis_valider, mis_rembourser
+                        FROM personnel, mission, ville
                         WHERE mis_PersoId = pers_id AND mis_VilId = Vil_Id');
 
 echo '<center>';
@@ -80,7 +80,7 @@ while($reponse = $req->fetch()) {
     echo '<td>'; echo $reponse['mis_dateDeb'] ; echo '</td>';
     echo '<td>'; echo $reponse['mis_dateFin']; echo '</td>';
     echo '<td>'; echo $reponse['Vil_Nom'] ; echo '</td>';
-    echo '<td>'; echo $reponse['pai_montant'] ; echo '</td>';
+    echo '<td>'; echo '</td>';
     echo '<td>'; if ($reponse['mis_rembourser'] == 1){echo 'Remboursée';}else{echo 'Non remboursée';} ;echo '</td>';
 
     echo '</tr>';

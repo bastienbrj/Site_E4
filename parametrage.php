@@ -84,6 +84,7 @@ $reqVille=$bdd->query('SELECT v1.Vil_Nom AS villeA, v2.Vil_Nom AS villeB, dist_k
     À  : <select name="distance2"><?=$list; ?></select> 
     Distance en Km : <input type="text" name="distKm">
     <input type="submit" placeholder="Valider">
+    
 </form>
 <br>
 <br>

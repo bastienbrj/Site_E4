@@ -21,4 +21,5 @@ $req->bindValue(':villeFin', $villeFin, PDO::PARAM_INT);
 $req->bindValue(':distKm', $distKm, PDO::PARAM_INT);
 $req->execute();
 
+header ('Location: http://localhost/Site_E4/parametrage.php');
 ?>
