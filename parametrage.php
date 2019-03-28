@@ -3,7 +3,18 @@ session_start();
 if (!isset($_SESSION['pers_id'])){
   die(header('Location: index.php'));
 }
-?> 
+
+try{
+  $bdd= new PDO ('mysql:host=localhost;dbname=epoka_e4', 'root', '');
+}
+catch(Exception $e){
+  die("Erreur :" . $e->getMessage());
+}
+$requtf8 = $bdd->query("SET NAMES 'utf8'");
+$req = $bdd->query('SELECT Vil_Nom, Vil_Id FROM ville ORDER BY Vil_Nom');
+$reqRemb = $bdd->query('SELECT * FROM paiement');
+$reqVille=$bdd->query('SELECT v1.Vil_Nom AS villeA, v2.Vil_Nom AS villeB, dist_km FROM distance INNER JOIN ville AS v1 ON dist_Villedeb = v1.Vil_Id INNER JOIN ville AS v2 ON dist_Villefin = v2.Vil_Id ');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -53,72 +64,44 @@ if (!isset($_SESSION['pers_id'])){
   <br>
   <br>
   <h1>Paramétrage de l'application</h1>
-  <?php
-  try{
-      $bdd= new PDO ('mysql:host=localhost;dbname=epoka_e4', 'root', '');
-      }
-    catch(Exception $e){
-      die("Erreur :" . $e->getMessage());
-      }
-   $req = $bdd->query('SELECT Vil_Id, Vil_CP, Vil_Nom FROM ville') 
-  ?>
-  <br>
-  <h1>Montant du remboursement au km</h1>
-  <form method="post" action="script_remboursement.php">
-  <p>Remboursement au Km : <input type="text" name="km">
-  <p>Indemnité d'hébergement : <input type="text" name="indemnite">
-  <p><input type="submit"></p>
-  </form>
-  <br>
-  <hr>
-  <h1>Distance entre villes</h1>
-  <form method="post" action="script_para.php">
-  <p>De : <select name="distance1" id="distance1">
-            <?php
-            while($res = $req->fetch()) {
-              echo '<option value="Vil_Id">';
-              echo $res['Vil_Nom'];
-              echo '</option>';
-            }
-            ?>
-          </select> 
-  <?php
-  try{
-      $bdd= new PDO ('mysql:host=localhost;dbname=epoka_e4', 'root', '');
-      }
-    catch(Exception $e){
-      die("Erreur :" . $e->getMessage());
-      }
-   $req = $bdd->query('SELECT Vil_Id, Vil_CP, Vil_Nom FROM ville') 
-  ?>
-      À : <select name="distance2" id="distance2">
-            <?php
-            while($reponse = $req->fetch()) {
-              echo '<option value="Vil_Id">';
-              echo $reponse['Vil_Nom'];
-              echo '</option>';
-            }
-            ?>
-          </select> 
-      Distance en Km : <input type="text" name="distKm"> 
-      <input type="submit">
-      </form>
-  <br>
-  <br>
-  <h1>Distances entre villes déjà saisies</h1>
-  <center><table style="width: 15%">
-  <tr>
-    <th style= "background-color: black">De</th>
-    <th style= "background-color: black">À</th>
-    <th style= "background-color: black">Km</th>
-  </tr>
-  <tr>
-    <td>De</td>
-    <td>À</td>
-    <td>Km</td>
-  </tr>
-
-</table></center>
+  <form name="montantRemboursementKm" method="post" action="script_montant.php">
+    <label>Remboursement au Km : <input type="text" name="rembKm" id="rembKm"></label><br>
+    <label>Indemnité d'hébergement : <input type="text" name="indHeb" id="indheb"></label><br>
+    <input type="submit" placeholder="Valider">
+</form>
+<br>
+<br>
+<hr>
+<h2>Distance entre les villes</h2>
+<form name="distanceVille" method="post" action="script_para.php">
+    <?php
+    $list ='';
+    foreach($req as $row){
+        $list.= '<option value="'.$row[1].'">' .$row[0].'<option>';
+    }
+    ?>
+    De : <select name="distance1"><?= $list;?> </select>
+    À  : <select name="distance2"><?=$list; ?></select> 
+    Distance en Km : <input type="text" name="distKm">
+    <input type="submit" placeholder="Valider">
+</form>
+<br>
+<br>
+<h2>Distance entre villes déjà saisies</h2>
+<?php
+echo '<table style="width: 50%">';
+echo '<tr>';
+echo '<th style= "background-color: black">De</th><th style= "background-color: black">À</th><th style= "background-color: black">Km</th>';
+echo '</tr>';
+while ($row = $reqVille->fetch()){
+    echo '<tr>
+<td>'.$row['villeA'].'</td>
+<td>'.$row['villeB'].'</td>
+<td>'.$row['dist_km'].'</td>
+</tr>';
+}
+echo '<table>'
+?></center>
 <?php
   }
 ?>
