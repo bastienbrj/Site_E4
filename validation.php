@@ -63,9 +63,10 @@ if (!isset($_SESSION['pers_id'])){
     catch(Exception $e){
       die("Erreur :" . $e->getMessage());
       }
-   $req = $bdd->query('SELECT pers_nom, pers_prenom, mis_dateDeb, mis_dateFin, Vil_Nom, mis_valider, mis_rembourser 
-                        FROM personnel, mission, ville 
-                        WHERE mis_PersoId = pers_id AND mis_VilId = Vil_Id');
+  $req = $bdd->query('SELECT mis_id, pers_nom, pers_prenom, mis_dateDeb, mis_dateFin, Vil_Nom, mis_valider, mis_rembourser 
+                      FROM personnel, mission, ville 
+                      WHERE mis_PersoId = pers_id 
+                      AND mis_VilId = Vil_Id');
 echo '<center>';
 echo '<table style="width: 50%">';
 echo '<tr>';
@@ -81,7 +82,7 @@ while($reponse = $req->fetch()) {
     echo '<td>'; echo $reponse['mis_dateDeb'] ; echo '</td>';
     echo '<td>'; echo $reponse['mis_dateFin']; echo '</td>';
     echo '<td>'; echo $reponse['Vil_Nom'] ; echo '</td>';
-    echo '<td>'; if ($reponse['mis_valider'] == 1){echo 'Valider';}else{echo '<input type="submit">';}; echo '</td>';
+    echo '<td>'; if ($reponse['mis_valider'] == 1){echo 'Valider';}else{ echo '<a href="script_valider.php?id=' . $reponse['mis_id'] . '"><input type="button" value="Valider"> </a>';}; echo '</td>';
     echo '<td>'; if ($reponse['mis_rembourser'] == 1){echo 'Rembourser';}else{echo 'Non rembourser';} ;echo '</td>';
 
     echo '</tr>';

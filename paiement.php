@@ -61,7 +61,7 @@ if (!isset($_SESSION['pers_id'])){
     catch(Exception $e){
       die("Erreur :" . $e->getMessage());
       }
-   $req = $bdd->query('SELECT pers_nom, pers_prenom, mis_dateDeb, mis_dateFin, Vil_Nom, mis_valider, mis_rembourser
+   $req = $bdd->query('SELECT mis_id, pers_nom, pers_prenom, mis_dateDeb, mis_dateFin, Vil_Nom, mis_valider, mis_rembourser
                         FROM personnel, mission, ville
                         WHERE mis_PersoId = pers_id AND mis_VilId = Vil_Id');
 
@@ -81,7 +81,7 @@ while($reponse = $req->fetch()) {
     echo '<td>'; echo $reponse['mis_dateFin']; echo '</td>';
     echo '<td>'; echo $reponse['Vil_Nom'] ; echo '</td>';
     echo '<td>'; echo '</td>';
-    echo '<td>'; if ($reponse['mis_rembourser'] == 1){echo 'Remboursée';}else{echo 'Non remboursée';} ;echo '</td>';
+    echo '<td>'; if ($reponse['mis_rembourser'] == 1){echo 'Remboursée';} else { echo '<a href="script_remboursement.php?id=' . $reponse['mis_id'] . '"><input type="button" value="Rembourser"> </a>';}echo '</td>';
 
     echo '</tr>';
 }

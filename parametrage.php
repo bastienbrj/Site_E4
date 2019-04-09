@@ -77,7 +77,7 @@ $reqVille=$bdd->query('SELECT v1.Vil_Nom AS villeA, v2.Vil_Nom AS villeB, dist_k
     <?php
     $list ='';
     foreach($req as $row){
-        $list.= '<option value="'.$row[1].'">' .$row[0].'<option>';
+        $list.= '<option value="'.$row[1].'">' .$row[0].'</option>';
     }
     ?>
     De : <select name="distance1"><?= $list;?> </select>
