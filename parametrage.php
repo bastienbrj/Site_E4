@@ -64,7 +64,7 @@ $reqVille=$bdd->query('SELECT v1.Vil_Nom AS villeA, v2.Vil_Nom AS villeB, dist_k
   <br>
   <br>
   <h1>Paramétrage de l'application</h1>
-  <form name="montantRemboursementKm" method="post" action="script_montant.php">
+  <form name="montantRemboursementKm" method="post" action="script_paraMontant.php">
     <label>Remboursement au Km : <input type="text" name="rembKm" id="rembKm"></label><br>
     <label>Indemnité d'hébergement : <input type="text" name="indHeb" id="indheb"></label><br>
     <input type="submit" placeholder="Valider">

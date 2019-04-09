@@ -3,6 +3,23 @@ session_start();
 if (!isset($_SESSION['pers_id'])){
   die(header('Location: index.php'));
 }
+
+try{
+  $bdd= new PDO ('mysql:host=localhost;dbname=epoka_e4', 'root', '');
+  }
+catch(Exception $e){
+  die("Erreur :" . $e->getMessage());
+  }
+$req = $bdd->query('SELECT mis_id, pers_nom, pers_prenom, mis_dateDeb, mis_dateFin, Vil_Nom, mis_valider, mis_rembourser
+                    FROM personnel, mission, ville
+                    WHERE mis_PersoId = pers_id AND mis_VilId = Vil_Id');
+
+$reqMontant = $bdd ->query('SELECT ((DATEDIFF(mis_dateFin, mis_dateDeb) + 1) * pai_hebergement) as PrixJour,
+                                   (ROUND(dist_km * pai_remboursement, 2)) as PrixKm, 
+                                   (((DATEDIFF(mis_dateFin, mis_dateDeb) + 1) * pai_hebergement) + (ROUND(dist_km * pai_remboursement, 2))) as PrixTotal 
+                            FROM mission, paiement, distance 
+                            WHERE dist_Villefin = mis_VilId');
+
 ?>
 
 <!DOCTYPE html>
@@ -55,23 +72,18 @@ if (!isset($_SESSION['pers_id'])){
   <br>
   <h1>Paiement des missions</h1>
   <?php
-    try{
-      $bdd= new PDO ('mysql:host=localhost;dbname=epoka_e4', 'root', '');
-      }
-    catch(Exception $e){
-      die("Erreur :" . $e->getMessage());
-      }
-   $req = $bdd->query('SELECT mis_id, pers_nom, pers_prenom, mis_dateDeb, mis_dateFin, Vil_Nom, mis_valider, mis_rembourser
-                        FROM personnel, mission, ville
-                        WHERE mis_PersoId = pers_id AND mis_VilId = Vil_Id');
-
+    
 echo '<center>';
 echo '<table style="width: 50%">';
 echo '<tr>';
 echo '<th style= "background-color: black">Nom</th><th style= "background-color: black">Prenom</th><th style= "background-color: black">Debut mission</th><th style= "background-color: black">Fin mission</th><th style= "background-color: black">Lieu mission</th><th style= "background-color: black">Montant</th><th style= "background-color: black">Paiement</th>';
 echo '</tr>';
-
-while($reponse = $req->fetch()) {
+$montants = array();
+foreach ($reqMontant as $val){
+    array_push($montants,$val['PrixTotal']);
+}
+$index =0;
+while ($reponse = $req->fetch()) {
 
     echo '<tr>';
 
@@ -80,10 +92,11 @@ while($reponse = $req->fetch()) {
     echo '<td>'; echo $reponse['mis_dateDeb'] ; echo '</td>';
     echo '<td>'; echo $reponse['mis_dateFin']; echo '</td>';
     echo '<td>'; echo $reponse['Vil_Nom'] ; echo '</td>';
-    echo '<td>'; echo '</td>';
-    echo '<td>'; if ($reponse['mis_rembourser'] == 1){echo 'Remboursée';} else { echo '<a href="script_remboursement.php?id=' . $reponse['mis_id'] . '"><input type="button" value="Rembourser"> </a>';}echo '</td>';
+    echo '<td>'; if($montants[$index] == 0){ echo '<td>parametrage vide</td>'; }else { echo ' <td>' . $montants[$index] . ' €' . '<td>'; }echo '</td>';
+    echo '<td>'; if($reponse['mis_rembourser'] == 1){echo 'Remboursée';} else { echo '<a href="script_remboursement.php?id=' . $reponse['mis_id'] . '"><input type="button" value="Rembourser"> </a>';}echo '</td>';
 
     echo '</tr>';
+    $index++;
 }
 echo '</table>';
 echo '</center>';
