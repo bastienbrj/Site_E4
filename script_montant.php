@@ -11,7 +11,7 @@ if(empty($rembKm) || empty($indHeb)) {
     echo "Veuillez saisir tout les champs ! ";
     echo "<a href='parametrage.php'>Retour</a>";
 }else{
-    $req = $bdd->prepare('INSERT INTO paiement (pai_remboursement, pai_indemnite) VALUES (:rembKm,:indHeb)');
+    $req = $bdd->prepare('INSERT INTO paiement (pai_remboursement, pai_hebergement) VALUES (:rembKm,:indHeb)');
     $req->bindValue(':rembKm', $rembKm, PDO::PARAM_INT);
     $req->bindValue(':indHeb', $indHeb, PDO::PARAM_INT);
     $req->execute();

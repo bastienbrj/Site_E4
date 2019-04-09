@@ -25,7 +25,7 @@ catch(Exception $e){
         } 
         else 
         {
-            echo "<script>alert('Identifiant ou mot de passe invalide !')</script>";         
+            echo "<script>alert('Identifiant ou mot de passe invalide !')</script>";       
         }
     }
     else 

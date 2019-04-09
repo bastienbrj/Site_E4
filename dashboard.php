@@ -43,7 +43,7 @@ if (!isset($_SESSION['pers_id'])){
 <br>
     <?php
     // On affiche les infos sur l'utilisateur connecté
-    echo 'Vos informations personnels sont : <br />
+    echo 'Vos informations personnelles sont : <br />
           Identifiant : ',$_SESSION['pers_id'],'<br />
           Prénom : ',$_SESSION['pers_prenom'],'<br />
           Nom : ',$_SESSION['pers_nom'],'<br />';
