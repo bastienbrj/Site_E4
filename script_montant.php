@@ -16,4 +16,5 @@ if(empty($rembKm) || empty($indHeb)) {
     $req->bindValue(':indHeb', $indHeb, PDO::PARAM_INT);
     $req->execute();
 }
+header('Location: parametrage.php');
 ?>
