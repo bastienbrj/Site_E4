@@ -82,8 +82,8 @@ while($reponse = $req->fetch()) {
     echo '<td>'; echo $reponse['mis_dateDeb'] ; echo '</td>';
     echo '<td>'; echo $reponse['mis_dateFin']; echo '</td>';
     echo '<td>'; echo $reponse['Vil_Nom'] ; echo '</td>';
-    echo '<td>'; if ($reponse['mis_valider'] == 1){echo 'Valider';}else{ echo '<a href="script_valider.php?id=' . $reponse['mis_id'] . '"><input type="button" value="Valider"> </a>';}; echo '</td>';
-    echo '<td>'; if ($reponse['mis_rembourser'] == 1){echo 'Rembourser';}else{echo 'Non rembourser';} ;echo '</td>';
+    echo '<td>'; if ($reponse['mis_valider'] == 1){echo 'Validée';}else{ echo '<a href="script_valider.php?id=' . $reponse['mis_id'] . '"><input type="button" value="Valider"> </a>';}; echo '</td>';
+    echo '<td>'; if ($reponse['mis_rembourser'] == 1){echo 'Remboursée';}else{echo 'Non remboursée';} ;echo '</td>';
 
     echo '</tr>';
 }
