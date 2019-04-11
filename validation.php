@@ -59,6 +59,7 @@ if (!isset($_SESSION['pers_id'])){
   <?php
     try{
       $bdd= new PDO ('mysql:host=localhost;dbname=epoka_e4', 'root', '');
+      $requtf8 = $bdd->query("SET NAMES 'utf8'");
       }
     catch(Exception $e){
       die("Erreur :" . $e->getMessage());
