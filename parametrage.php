@@ -13,7 +13,8 @@ catch(Exception $e){
 $requtf8 = $bdd->query("SET NAMES 'utf8'");
 $req = $bdd->query('SELECT Vil_Nom, Vil_Id FROM ville ORDER BY Vil_Nom');
 $reqRemb = $bdd->query('SELECT * FROM paiement');
-$reqVille=$bdd->query('SELECT v1.Vil_Nom AS villeA, v2.Vil_Nom AS villeB, dist_km FROM distance INNER JOIN ville AS v1 ON dist_Villedeb = v1.Vil_Id INNER JOIN ville AS v2 ON dist_Villefin = v2.Vil_Id ');
+$reqVille=$bdd->query('SELECT v1.Vil_Nom AS villeA, v2.Vil_Nom AS villeB, dist_km FROM distance INNER JOIN ville AS v1 ON dist_Villedeb = v1.Vil_Id 
+                                                                                                INNER JOIN ville AS v2 ON dist_Villefin = v2.Vil_Id ');
 ?>
 <!DOCTYPE html>
 <html>
