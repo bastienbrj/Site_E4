@@ -6,6 +6,7 @@ if (!isset($_SESSION['pers_id'])){
 
 try{
   $bdd= new PDO ('mysql:host=localhost;dbname=epoka_e4', 'root', '');
+  $requtf8 = $bdd->query("SET NAMES 'utf8'");
   }
 catch(Exception $e){
   die("Erreur :" . $e->getMessage());
@@ -14,11 +15,10 @@ $req = $bdd->query('SELECT mis_id, pers_nom, pers_prenom, mis_dateDeb, mis_dateF
                     FROM personnel, mission, ville
                     WHERE mis_PersoId = pers_id AND mis_VilId = Vil_Id');
 
-$reqMontant = $bdd ->query('SELECT ((DATEDIFF(mis_dateFin, mis_dateDeb) + 1) * pai_hebergement) as PrixJour,
-                                   (ROUND(dist_km * pai_remboursement, 2)) as PrixKm, 
-                                   (((DATEDIFF(mis_dateFin, mis_dateDeb) + 1) * pai_hebergement) + (ROUND(dist_km * pai_remboursement, 2))) as PrixTotal 
-                            FROM mission, paiement, distance 
-                            WHERE dist_Villefin = mis_VilId');
+$stringreqMontant ='SELECT (((DATEDIFF(mis_dateFin, mis_dateDeb) + 1) * pai_hebergement) + (ROUND(dist_km * pai_remboursement, 2))) as PrixTotal 
+FROM mission, paiement, distance 
+WHERE dist_Villefin = mis_VilId
+AND mis_id = :idMis';
 
 ?>
 
@@ -78,13 +78,12 @@ echo '<table style="width: 50%">';
 echo '<tr>';
 echo '<th style= "background-color: black">Nom</th><th style= "background-color: black">Prenom</th><th style= "background-color: black">Debut mission</th><th style= "background-color: black">Fin mission</th><th style= "background-color: black">Lieu mission</th><th style= "background-color: black">Montant</th><th style= "background-color: black">Paiement</th>';
 echo '</tr>';
-$montants = array();
-foreach ($reqMontant as $val){
-    array_push($montants,$val['PrixTotal']);
-}
-$index =0;
-while ($reponse = $req->fetch()) {
 
+while ($reponse = $req->fetch()) {
+  $reqMontant = $bdd->prepare($stringreqMontant);
+  $reqMontant->bindParam(':idMis',$reponse['mis_id'],PDO::PARAM_INT);
+  $reqMontant->execute();
+  $montant = $reqMontant->fetch();
     echo '<tr>';
 
     echo '<td>'; echo $reponse['pers_nom'] ; echo '</td>';
@@ -92,11 +91,10 @@ while ($reponse = $req->fetch()) {
     echo '<td>'; echo $reponse['mis_dateDeb'] ; echo '</td>';
     echo '<td>'; echo $reponse['mis_dateFin']; echo '</td>';
     echo '<td>'; echo $reponse['Vil_Nom'] ; echo '</td>';
-    echo '<td>'; if($montants[$index] == 0){ echo '<td>parametrage vide</td>'; }else { echo ' <td>' . $montants[$index] . ' €' . '<td>'; }echo '</td>';
+    echo '<td>'; if($montant[0] != ''){ echo $montant[0] . ' €';} else { echo 'Distance non définie'; }echo '</td>';
     echo '<td>'; if($reponse['mis_rembourser'] == 1){echo 'Remboursée';} else { echo '<a href="script_remboursement.php?id=' . $reponse['mis_id'] . '"><input type="button" value="Rembourser"> </a>';}echo '</td>';
 
     echo '</tr>';
-    $index++;
 }
 echo '</table>';
 echo '</center>';
